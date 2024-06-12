@@ -1,4 +1,4 @@
-<sdf version="1.5">
+<sdf version="1.9">
   <world name="default">
     <gui fullscreen="0">
 

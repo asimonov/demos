@@ -21,7 +21,11 @@ import xacro
 def generate_launch_description():
 
     mars_rover_demos_path = get_package_share_directory('mars_rover')
+    print("mars_rover_demos_path")
+    print(mars_rover_demos_path)
     mars_rover_models_path = get_package_share_directory('simulation')
+    print("mars_rover_models_path")
+    print(mars_rover_models_path)
 
     env = {'GZ_SIM_SYSTEM_PLUGIN_PATH':
            ':'.join([environ.get('GZ_SIM_SYSTEM_PLUGIN_PATH', default=''),
@@ -84,9 +88,9 @@ def generate_launch_description():
             package='ros_gz_bridge',
             executable='parameter_bridge',
             arguments=[
-                '/clock@rosgraph_msgs/msg/Clock[gazebo.msgs.Clock',
-                '/model/curiosity_mars_rover/odometry@nav_msgs/msg/Odometry@gazebo.msgs.Odometry',
-                '/scan@sensor_msgs/msg/LaserScan@gazebo.msgs.LaserScan',
+                '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
+                '/model/curiosity_mars_rover/odometry@nav_msgs/msg/Odometry@gz.msgs.Odometry',
+                '/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan',
             ],
             output='screen')
             
