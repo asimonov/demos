@@ -19,11 +19,11 @@ def generate_launch_description():
     canadarm_demos_path = get_package_share_directory('canadarm')
     simulation_models_path = get_package_share_directory('simulation')
 
-    env = {'IGN_GAZEBO_SYSTEM_PLUGIN_PATH':
-           ':'.join([environ.get('IGN_GAZEBO_SYSTEM_PLUGIN_PATH', default=''),
+    env = {'GZ_SIM_SYSTEM_PLUGIN_PATH':
+           ':'.join([environ.get('GZ_SIM_SYSTEM_PLUGIN_PATH', default=''),
                      environ.get('LD_LIBRARY_PATH', default='')]),
-           'IGN_GAZEBO_RESOURCE_PATH':
-           ':'.join([environ.get('IGN_GAZEBO_RESOURCE_PATH', default=''), canadarm_demos_path])}
+           'GZ_SIM_RESOURCE_PATH':
+           ':'.join([environ.get('GZ_SIM_RESOURCE_PATH', default=''), canadarm_demos_path])}
 
 
     urdf_model_path = os.path.join(simulation_models_path, 'models', 'canadarm', 'urdf', 'SSRMS_Canadarm2.urdf.xacro')
@@ -48,7 +48,7 @@ def generate_launch_description():
 
 
     start_world = ExecuteProcess(
-        cmd=['ign gazebo', leo_model, '-r'],
+        cmd=['gz sim', leo_model, '-r'],
         output='screen',
         additional_env=env,
         shell=True
@@ -63,7 +63,7 @@ def generate_launch_description():
             parameters=[robot_description])
 
     spawn = Node(
-        package='ros_ign_gazebo', executable='create',
+        package='ros_gz_sim', executable='create',
         arguments=[
             '-name', 'canadarm',
             '-topic', robot_description,

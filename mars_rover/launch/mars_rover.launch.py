@@ -114,7 +114,7 @@ def generate_launch_description():
 
     ## Control Components
 
-    component_state_msg = '{name: "IgnitionSystem", target_state: {id: 3, label: ""}}'
+    component_state_msg = '{name: "GazeboSimSystem", target_state: {id: 3, label: ""}}'
 
     ## a hack to resolve current bug
     set_hardware_interface_active = ExecuteProcess(
